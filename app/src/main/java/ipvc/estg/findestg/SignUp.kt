@@ -1,10 +1,12 @@
 package ipvc.estg.findestg
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +22,7 @@ class SignUp : AppCompatActivity() {
     private lateinit var textInputEditTextEmail: TextInputEditText
     private lateinit var buttonSignUp: Button
     private lateinit var textViewLogin:  TextView
+    private lateinit var progressBar: ProgressBar
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +35,7 @@ class SignUp : AppCompatActivity() {
         textInputEditTextEmail = findViewById(R.id.email)
         buttonSignUp = findViewById(R.id.buttonSignUp)
         textViewLogin = findViewById(R.id.loginText)
+        progressBar = findViewById(R.id.progress)
 
 
         buttonSignUp.setOnClickListener(object : View.OnClickListener {
@@ -45,10 +49,9 @@ class SignUp : AppCompatActivity() {
 
 
                 if (fullname.isNotEmpty() && username.isNotEmpty() && password.isNotEmpty() && email.isNotEmpty()) {
-
-
-
                     //Start ProgressBar first (Set visibility VISIBLE)
+                    progressBar.visibility = View.VISIBLE
+
                     val handler = Handler(Looper.getMainLooper())
                     handler.post {
                         //Starting Write and Read data with URL
@@ -65,16 +68,29 @@ class SignUp : AppCompatActivity() {
                         data[2] = password
                         data[3] = email
                         val putData = PutData(
-                            "https://localhost/FindEstg/signup.php",
+                            "http://192.168.1.74/FindEstg/signup.php", // -- mudar IP --
                             "POST",
                             field,
                             data
                         )
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
+                                progressBar.visibility = View.GONE
                                 val result = putData.result
-                                //End ProgressBar (Set visibility to GONE)
-                                //Log.i("PutData", result)
+
+                                if(result.equals("Sign Up Success")){
+
+                                    Toast.makeText(applicationContext, result, Toast.LENGTH_SHORT).show()
+                                    val intent = Intent(this@SignUp,Login::class.java)
+                                    startActivity(intent)
+
+                                }else{
+                                    Toast.makeText(applicationContext, result, Toast.LENGTH_SHORT).show()
+                                }
+
+
+
+
                             }
                         }
                         //End Write and Read data with URL
