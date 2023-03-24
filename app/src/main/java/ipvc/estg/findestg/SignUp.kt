@@ -6,6 +6,7 @@ import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.vishnusivadas.advanced_httpurlconnection.PutData
@@ -59,10 +60,12 @@ class SignUp : AppCompatActivity() {
                         field[3] = "email"
                         //Creating array for data
                         val data = arrayOfNulls<String>(4)
-                        data[0] = "data-1"
-                        data[1] = "data-2"
+                        data[0] = fullname
+                        data[1] = username
+                        data[2] = password
+                        data[3] = email
                         val putData = PutData(
-                            "https://projects.vishnusivadas.com/AdvancedHttpURLConnection/putDataTest.php",
+                            "https://localhost/FindEstg/signup.php",
                             "POST",
                             field,
                             data
@@ -78,6 +81,8 @@ class SignUp : AppCompatActivity() {
                     }
 
 
+                } else {
+                    Toast.makeText(applicationContext, "All fields required", Toast.LENGTH_SHORT).show()
                 }
 
 
