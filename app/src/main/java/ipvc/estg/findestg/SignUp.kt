@@ -117,4 +117,11 @@ class SignUp : AppCompatActivity() {
 
     }
 
+    fun LoginHere(view: View) {
+
+        val intent = Intent(this@SignUp,Login::class.java)
+        startActivity(intent)
+
+    }
+
 }

@@ -105,7 +105,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
-            tools:targetApi="jelly_bean" />
+            tools:targetApi="jelly_bean"
+            android:onClick="SignUpHere"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
