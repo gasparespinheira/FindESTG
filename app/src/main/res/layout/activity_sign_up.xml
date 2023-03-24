@@ -137,7 +137,8 @@
             android:text="@string/signup"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progress" />
+            app:layout_constraintTop_toBottomOf="@+id/progress"
+            android:onClick="buttonSignUp"/>
 
         <TextView
             android:id="@+id/loginText"
