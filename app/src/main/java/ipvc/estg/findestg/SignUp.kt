@@ -68,7 +68,8 @@ class SignUp : AppCompatActivity() {
                         data[2] = password
                         data[3] = email
                         val putData = PutData(
-                            "http://192.168.1.74/FindEstg/signup.php", // -- mudar IP --
+                            "http://192.168.1.74/FindEstg/login.php", // -- mudar IP --
+                            //"http://127.0.0.1/FindEstg/login.php", // -- mudar IP --
                             "POST",
                             field,
                             data

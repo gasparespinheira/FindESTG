@@ -60,6 +60,7 @@ class Login : AppCompatActivity() {
                         data[1] = password
                         val putData = PutData(
                             "http://192.168.1.74/FindEstg/login.php", // -- mudar IP --
+                            //"http://127.0.0.1/FindEstg/login.php", // -- mudar IP --
                             "POST",
                             field,
                             data
