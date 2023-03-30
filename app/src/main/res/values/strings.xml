@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">FindESTG</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_lista_favoritos">Lista Favoritos</string>
+    <string name="nav_idioma">Idioma</string>
+    <string name="nav_logout">Logout</string>
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
 </resources>

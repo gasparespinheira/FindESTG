@@ -5,8 +5,6 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
@@ -14,14 +12,13 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
-open class MainActivity : AppCompatActivity() {
+class FavoritosActivity : AppCompatActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        setContentView(R.layout.activity_favoritos)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -36,17 +33,17 @@ open class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         val textView: TextView = findViewById(R.id.seccao_app) as TextView
-        textView.text = "Home"
+        textView.text = "Lista de Favoritos"
         textView.setTextColor(Color.argb(255, 42,52,117))
 
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_home -> {
-                }
-                R.id.nav_lista_favoritos -> {
-                    val intent = Intent(this@MainActivity, FavoritosActivity::class.java)
+                    val intent = Intent(this@FavoritosActivity, MainActivity::class.java)
                     startActivity(intent)
                     finish()
+                }
+                R.id.nav_lista_favoritos -> {
                 }
                 R.id.nav_lista_favoritos -> {
                 }
