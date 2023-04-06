@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "137753146650",
+    "project_id": "findestg-334f4",
+    "storage_bucket": "findestg-334f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137753146650:android:a0200fd951f3b772c2e8a3",
+        "android_client_info": {
+          "package_name": "ipvc.estg.findestg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137753146650-he1hnfrjap8vlhd00ibl4su7uvkfhu5m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ipvc.estg.findestg",
+            "certificate_hash": "f0ba3dc5ac98667f660337c9925a3bc9eb23b54b"
+          }
+        },
+        {
+          "client_id": "137753146650-e3jilgmaltg8ald3mjnj83bi0jtqjrbs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALcV38nSY-iA41uZlg52EeZEqaNy7HBww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "137753146650-e3jilgmaltg8ald3mjnj83bi0jtqjrbs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
