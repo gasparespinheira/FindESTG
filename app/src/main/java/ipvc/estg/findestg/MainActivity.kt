@@ -14,30 +14,23 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
-open class MainActivity : AppCompatActivity() {
-
-    lateinit var toggle: ActionBarDrawerToggle
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //inicio do menu
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
 
-        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0)
-
+        val toggle: ActionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
-
-        val textView: TextView = findViewById(R.id.seccao_app) as TextView
-        textView.text = "Home"
-        textView.setTextColor(Color.argb(255, 42,52,117))
 
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -50,17 +43,16 @@ open class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_lista_favoritos -> {
                 }
-                R.id.nav_idioma -> {
-
-                }
                 R.id.nav_logout -> {
                 }
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
+        //fim do menu
     }
 
+    //metodo do menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return super.onOptionsItemSelected(item)
     }
