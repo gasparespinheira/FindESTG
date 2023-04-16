@@ -15,62 +15,45 @@ import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
-    private val TAG = "RegisterActivity"
-    private lateinit var emailEditText: EditText
-    private lateinit var passwordEditText: EditText
-    private lateinit var registerButton: Button
+    private lateinit var binding: ActivitySignUpBinding
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        auth = FirebaseAuth.getInstance() // Initialize FirebaseAuth
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        emailEditText = findViewById(R.id.email_edittext)
-        passwordEditText = findViewById(R.id.password_edittext)
-        registerButton = findViewById(R.id.register_button)
+        firebaseAuth = FirebaseAuth.getInstance()
 
-        registerButton.setOnClickListener {
-            val email = emailEditText.text.toString()
-            val password = passwordEditText.text.toString()
-            registerUser(email, password)
+        binding.textView.setOnClickListener {
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+        }
+        binding.button.setOnClickListener {
+            val email = binding.emailEt.text.toString()
+            val pass = binding.passET.text.toString()
+            val confirmPass = binding.confirmPassEt.text.toString()
+
+            if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
+                if (pass == confirmPass) {
+
+                    firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            val intent = Intent(this, SignInActivity::class.java)
+                            startActivity(intent)
+                        } else {
+                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+
+                        }
+                    }
+                } else {
+                    Toast.makeText(this, "Password is not matching", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
+
+            }
         }
     }
-
-    private fun registerUser(email: String, password: String) {
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnSuccessListener { authResult ->
-                // Sign in success, update UI with the signed-in user's information
-                val user = auth.currentUser
-                val intent = Intent(this, DashboardActivity::class.java)
-                startActivity(intent)
-
-                // Add user data to Firestore
-                val db = Firebase.firestore
-                val data = hashMapOf(
-                    "email" to email,
-                    "password" to password
-                )
-                if (user != null) {
-                    db.collection("user")
-                        .document(authResult.user?.uid ?: "")
-                        .set(data)
-                        .addOnSuccessListener {
-                            Log.d(TAG, "DocumentSnapshot added with ID: ${authResult.user?.uid}")
-                        }
-                        .addOnFailureListener { e ->
-                            Log.w(TAG, "Error adding document", e)
-                        }
-                }
-            }
-            .addOnFailureListener { e ->
-                // If sign in fails, display a message to the user.
-                Toast.makeText(
-                    baseContext, "Authentication failed.",
-                    Toast.LENGTH_SHORT
-                ).show()
-                Log.w(TAG, "createUserWithEmailAndPassword:failure", e)
-            }
-    }
-            }
+}
