@@ -1,24 +1,20 @@
 package ipvc.estg.findestg
 
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import android.widget.ImageButton
-import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_home)
 
         //inicio do menu
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -37,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home -> {
                 }
                 R.id.nav_lista_favoritos -> {
-                    val intent = Intent(this@MainActivity, FavoritosActivity::class.java)
+                    val intent = Intent(this@HomeActivity, FavoritosActivity::class.java)
                     startActivity(intent)
                     finish()
                 }

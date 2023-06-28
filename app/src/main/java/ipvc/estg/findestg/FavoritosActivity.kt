@@ -1,11 +1,9 @@
 package ipvc.estg.findestg
 
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -33,7 +31,7 @@ class FavoritosActivity : AppCompatActivity() {
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_home -> {
-                    val intent = Intent(this@FavoritosActivity, MainActivity::class.java)
+                    val intent = Intent(this@FavoritosActivity, HomeActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
