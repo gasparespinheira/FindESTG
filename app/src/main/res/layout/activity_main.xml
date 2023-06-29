@@ -25,10 +25,19 @@
         android:layout_width="match_parent"
         android:layout_height="312dp"
         android:layout_below="@+id/scanner"
+        android:layout_centerInParent="true"
         android:layout_marginTop="25dp"
-        android:textSize="30dp"
-        />
+        android:textSize="30dp" />
 
+    <Button
+        android:id="@+id/button_bussola"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:text="Desejo navegar com a Bússola"
+        android:onClick="navegar_bussola"/>
 
 
 

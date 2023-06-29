@@ -42,5 +42,14 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
+
     }
+
+    fun navegar_bussola(view: View) {
+
+        val intent = Intent(this, NavegarBussolaEntradaESTG::class.java)
+        startActivity(intent)
+
+    }
+
 }
