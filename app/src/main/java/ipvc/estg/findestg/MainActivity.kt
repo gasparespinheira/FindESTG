@@ -24,9 +24,9 @@ class MainActivity : AppCompatActivity() {
 
         scanBtn.setOnClickListener(View.OnClickListener {
             val intentIntegrator = IntentIntegrator(this@MainActivity)
-            intentIntegrator.setOrientationLocked(true)
             intentIntegrator.setPrompt("Scan a QR Code")
             intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
+            intentIntegrator.setBarcodeImageEnabled(false)
             intentIntegrator.initiateScan()
         })
     }
