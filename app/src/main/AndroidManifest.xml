@@ -15,10 +15,16 @@
         android:theme="@style/Theme.LoginAndSignUp"
         tools:targetApi="31">
         <activity
-            android:name=".Logout"
+            android:name=".InfoCantina"
             android:exported="false" />
         <activity
-            android:name=".teste1"
+            android:name=".InfoBar"
+            android:exported="false" />
+        <activity
+            android:name=".InfoAcademicos"
+            android:exported="false" />
+        <activity
+            android:name=".Logout"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
