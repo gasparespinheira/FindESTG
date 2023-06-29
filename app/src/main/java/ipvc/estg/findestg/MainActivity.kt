@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
             intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
             intentIntegrator.setBarcodeImageEnabled(false)
             intentIntegrator.initiateScan()
+
         })
     }
 
