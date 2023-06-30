@@ -1,7 +1,8 @@
 package ipvc.estg.findestg
 
-data class Localizacao(var descricao : String,
+data class Localizacao(val id: String,
+                       var descricao : String,
                        var tipo : String,
                        var isExpandable: Boolean = false){
-                       constructor(): this("", "")
+                       constructor(): this("", "", "")
                        }

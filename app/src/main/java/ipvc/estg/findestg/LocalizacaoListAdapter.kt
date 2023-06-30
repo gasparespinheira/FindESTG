@@ -1,8 +1,10 @@
 package ipvc.estg.findestg
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -42,6 +44,27 @@ class LocalizacaoListAdapter(private val localizacao_list: ArrayList<Localizacao
         } else {
             holder._linhaOcultaLayout.visibility = View.GONE
         }
+
+        holder._verMaisButton.setOnClickListener {
+            val descricao = currentLocalizacao.descricao
+
+            when (descricao) {
+                "Serviços Académicos" -> {
+                    val intent = Intent(holder.itemView.context, InfoAcademicos::class.java)
+                    holder.itemView.context.startActivity(intent)
+                }
+                "Bar" -> {
+                    val intent = Intent(holder.itemView.context, InfoBar::class.java)
+                    holder.itemView.context.startActivity(intent)
+                }
+                "Cantina" -> {
+                    val intent = Intent(holder.itemView.context, InfoCantina::class.java)
+                    holder.itemView.context.startActivity(intent)
+                }
+                else -> {
+                }
+            }
+        }
     }
 }
 
@@ -49,10 +72,11 @@ class LocalizacaoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
 
     val _descricao: TextView
     val _linhaOcultaLayout: LinearLayout
+    val _verMaisButton: Button
 
     init {
         _descricao = itemView.findViewById(R.id.descricao_item)
         _linhaOcultaLayout = itemView.findViewById(R.id.linha_oculta)
+        _verMaisButton = itemView.findViewById(R.id.ver_mais_button)
     }
 }
-

@@ -6,9 +6,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import ipvc.estg.findestg.databinding.ActivityLogoutBinding
 
 class HomeActivity : AppCompatActivity() {
 
@@ -16,6 +18,8 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var localizacaoList: ArrayList<Localizacao>
     private lateinit var localizacao_recycler_view: RecyclerView
     private var valor_botao: Int? = null
+
+    private lateinit var user: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +31,14 @@ class HomeActivity : AppCompatActivity() {
         localizacaoList = arrayListOf()
 
         getDataLocalizacoes()
+
+        user = FirebaseAuth.getInstance()
+
+        if (user.currentUser != null) {
+            user.currentUser?.let {
+
+            }
+        }
     }
 
     fun getLocalizacaoSalas(view: View?) {
