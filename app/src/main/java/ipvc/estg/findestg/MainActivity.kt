@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
     fun navegar_bussola(view: View) {
 
-        val intent = Intent(this, NavegarBussolaTraseiraESTG::class.java)
+        val intent = Intent(this, NavegarBussolaLateralESTG::class.java)
         startActivity(intent)
 
     }

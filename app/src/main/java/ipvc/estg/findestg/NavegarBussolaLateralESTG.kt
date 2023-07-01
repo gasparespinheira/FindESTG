@@ -53,14 +53,14 @@ class NavegarBussolaLateralESTG : AppCompatActivity() {
 
         button_cantina = findViewById(R.id.button_cantina)
         button_cantina.setOnClickListener {
-            imageView.setImageResource(R.drawable.bussola_cantina_principal)
+            imageView.setImageResource(R.drawable.bussola_cantina_lateral)
         }
 
 
         // -- BAR
         button_bar = findViewById(R.id.button_bar)
         button_bar.setOnClickListener {
-            imageView.setImageResource(R.drawable.bussola_bar_principal)
+            imageView.setImageResource(R.drawable.bussola_bar_lateral)
         }
 
 
@@ -68,7 +68,7 @@ class NavegarBussolaLateralESTG : AppCompatActivity() {
 
         button_academicos = findViewById(R.id.button_sa)
         button_academicos.setOnClickListener {
-            imageView.setImageResource(R.drawable.bussola_academicos_principal)
+            imageView.setImageResource(R.drawable.bussola_academicos_lateral)
         }
 
 
@@ -76,7 +76,7 @@ class NavegarBussolaLateralESTG : AppCompatActivity() {
 
         button_todos = findViewById(R.id.button_all)
         button_todos.setOnClickListener {
-            imageView.setImageResource(R.drawable.bussola_todos_principal)
+            imageView.setImageResource(R.drawable.bussola_todos_lateral)
         }
 
 
