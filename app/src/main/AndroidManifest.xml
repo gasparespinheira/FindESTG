@@ -16,7 +16,13 @@
         android:theme="@style/Theme.FindESTG"
         tools:targetApi="31">
         <activity
-            android:name=".NavegarBussolaEntradaESTG"
+            android:name=".NavegarBussolaLateralESTG"
+            android:exported="false" />
+        <activity
+            android:name=".NavegarBussolaTraseiraESTG"
+            android:exported="false" />
+        <activity
+            android:name=".NavegarBussolaPrincipalESTG"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

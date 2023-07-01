@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PowerManager
 import android.util.Log
-import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
 import android.widget.Button
@@ -17,7 +16,7 @@ import android.widget.ImageView
 import android.widget.TextView
 
 
-class NavegarBussolaEntradaESTG : AppCompatActivity() {
+class NavegarBussolaPrincipalESTG : AppCompatActivity() {
 
     private lateinit var bussola : Sensor
     private lateinit var acelerometro : Sensor
@@ -46,7 +45,7 @@ class NavegarBussolaEntradaESTG : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_navegar_bussola_entrada_estg)
+        setContentView(R.layout.activity_navegar_bussola_estg)
 
         var imageView: ImageView = findViewById(R.id.imageView)
 
@@ -81,7 +80,7 @@ class NavegarBussolaEntradaESTG : AppCompatActivity() {
         }
 
 
-        
+
 
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
