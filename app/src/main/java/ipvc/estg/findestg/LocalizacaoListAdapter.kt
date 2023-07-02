@@ -43,19 +43,14 @@ class LocalizacaoListAdapter(
                         "id_user" to FirebaseAuth.getInstance().currentUser?.uid
                     )
 
-                    // Add the localizacao to favorites in Firestore
                     favoriteRef.set(favoriteData)
                         .addOnSuccessListener {
-                            // Handle successful addition to favorites
-                            // Update the UI accordingly
-                            Toast.makeText(itemView.context, "Added to favorites", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(itemView.context, "Localização adicionado com sucesso aos favoritos", Toast.LENGTH_SHORT).show()
 
                             homeActivity.getDataLocalizacoes()
                         }
                         .addOnFailureListener { e ->
-                            // Handle failure to add to favorites
-                            // Update the UI accordingly
-                            Toast.makeText(itemView.context, "Failed to add to favorites: ${e.message}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(itemView.context, "Falha a adicionar a localização aos favoritos", Toast.LENGTH_SHORT).show()
                         }
                 }
             }
@@ -67,35 +62,26 @@ class LocalizacaoListAdapter(
                     val db = FirebaseFirestore.getInstance()
                     val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
 
-                    // Query the "favoritos" collection based on the conditions
                     val query = db.collection("favoritos")
                         .whereEqualTo("id_localizacao", localizacao.id)
                         .whereEqualTo("id_user", currentUserUid)
 
-                    // Delete the matching document from "favoritos" collection
                     query.get()
                         .addOnSuccessListener { snapshot ->
                             for (document in snapshot.documents) {
                                 document.reference.delete()
                                     .addOnSuccessListener {
-                                        // Handle successful deletion from favorites
-                                        // Update the UI accordingly
-                                        Toast.makeText(itemView.context, "Deleted from favorites", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(itemView.context, "Localização removida com sucesso dos favoritos", Toast.LENGTH_SHORT).show()
 
                                         homeActivity.getDataLocalizacoes()
                                     }
                                     .addOnFailureListener { e ->
-                                        // Handle failure to delete from favorites
-                                        // Update the UI accordingly
-                                        Toast.makeText(itemView.context, "Failed to delete from favorites: ${e.message}", Toast.LENGTH_SHORT).show()
-                                        Log.e(TAG, "Failed to delete from favorites", e)
+                                        Toast.makeText(itemView.context, "Falha na remoção da localização dos favoritos", Toast.LENGTH_SHORT).show()
                                     }
                             }
                         }
                         .addOnFailureListener { e ->
-                            // Handle failure to retrieve matching documents
-                            Toast.makeText(itemView.context, "Failed to retrieve favorites: ${e.message}", Toast.LENGTH_SHORT).show()
-                            Log.e(TAG, "Failed to retrieve favorites", e)
+                            Toast.makeText(itemView.context, "Falha ao receber a listagem dos favoritos", Toast.LENGTH_SHORT).show()
                         }
                 }
             }
@@ -154,9 +140,6 @@ class LocalizacaoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
                 "Cantina" -> {
                     val intent = Intent(itemView.context, InfoCantina::class.java)
                     itemView.context.startActivity(intent)
-                }
-                else -> {
-                    // Handle other cases if needed
                 }
             }
         }

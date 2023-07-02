@@ -36,6 +36,8 @@ class HomeActivity : AppCompatActivity() {
 
         getDataLocalizacoes()
 
+        Toast.makeText(this@HomeActivity, "Listagem localizações", Toast.LENGTH_LONG).show()
+
         user = FirebaseAuth.getInstance()
     }
 
@@ -46,12 +48,14 @@ class HomeActivity : AppCompatActivity() {
 
             valor_botao_lista_favoritos = 1
             getDataFavoritosUser()
+            Toast.makeText(this@HomeActivity, "Listagem localizações favoritas filtrada pelo tipo sala", Toast.LENGTH_LONG).show()
         }
 
         if (localizacaoList.isNotEmpty()) {
             localizacaoList.clear()
             valor_botao_lista_localizacoes = 1
             getDataLocalizacoes()
+            Toast.makeText(this@HomeActivity, "Listagem localizações filtrada pelo tipo sala", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -62,12 +66,14 @@ class HomeActivity : AppCompatActivity() {
 
             valor_botao_lista_favoritos = 2
             getDataFavoritosUser()
+            Toast.makeText(this@HomeActivity, "Listagem localizações favoritas filtrada pelo tipo auditório", Toast.LENGTH_LONG).show()
         }
 
         if (localizacaoList.isNotEmpty()) {
             localizacaoList.clear()
             valor_botao_lista_localizacoes = 2
             getDataLocalizacoes()
+            Toast.makeText(this@HomeActivity, "Listagem localizações filtrada pelo tipo auditório", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -77,12 +83,14 @@ class HomeActivity : AppCompatActivity() {
             localizacaoFavoritoList.clear()
             valor_botao_lista_favoritos = 3
             getDataFavoritosUser()
+            Toast.makeText(this@HomeActivity, "Listagem localizações favoritas filtrada pelo tipo serviço", Toast.LENGTH_LONG).show()
         }
 
         if (localizacaoList.isNotEmpty()){
             localizacaoList.clear()
             valor_botao_lista_localizacoes = 3
             getDataLocalizacoes()
+            Toast.makeText(this@HomeActivity, "Listagem localizações filtrada pelo tipo serviço", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -91,6 +99,7 @@ class HomeActivity : AppCompatActivity() {
         localizacaoList.clear()
         valor_botao_lista_localizacoes = null
         getDataLocalizacoes()
+        Toast.makeText(this@HomeActivity, "Listagem localizações", Toast.LENGTH_LONG).show()
     }
 
     fun getTodasLocalizacoesFavoritos(view: View) {
@@ -98,6 +107,7 @@ class HomeActivity : AppCompatActivity() {
         localizacaoList.clear()
         valor_botao_lista_favoritos = null
         getDataFavoritosUser()
+        Toast.makeText(this@HomeActivity, "Listagem localizações favoritas", Toast.LENGTH_SHORT).show()
     }
 
     fun getDataLocalizacoes() {
@@ -134,7 +144,6 @@ class HomeActivity : AppCompatActivity() {
                             // Create the adapter with the filtered list
                             val adapter = LocalizacaoListAdapter(filteredList, this)
                             localizacao_recycler_view.adapter = adapter
-
                         } else if (valor_botao_lista_localizacoes == 3) {
                             val filteredList = localizacaoList.filter { localizacao ->
                                 localizacao.tipo == "servico"
@@ -149,25 +158,9 @@ class HomeActivity : AppCompatActivity() {
                         }
                     }
                 }
-
-                for (i in 0 until localizacao_recycler_view.childCount) {
-                    val viewHolder = localizacao_recycler_view.findViewHolderForAdapterPosition(i) as? LocalizacaoViewHolder
-                    if (viewHolder != null) {
-                        val currentLocalizacao = localizacaoList.getOrNull(i)
-                        if (currentLocalizacao != null) {
-                            if (currentLocalizacao.isFavorite) {
-                                viewHolder._addFavoriteButton.visibility = View.GONE
-                                viewHolder._deleteFavoriteButton.visibility = View.VISIBLE
-                            } else {
-                                viewHolder._addFavoriteButton.visibility = View.VISIBLE
-                                viewHolder._deleteFavoriteButton.visibility = View.GONE
-                            }
-                        }
-                    }
-                }
             }
             .addOnFailureListener {
-                Toast.makeText(this@HomeActivity, it.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(this@HomeActivity, "Falha na listagem das localizações", Toast.LENGTH_LONG).show()
             }
     }
 
@@ -226,19 +219,20 @@ class HomeActivity : AppCompatActivity() {
                                         // Create the adapter with the filtered list
                                         val adapter = LocalizacaoFavoritoListAdapter(filteredList, this)
                                         localizacao_recycler_view.adapter = adapter
+
                                     } else {
                                         val adapter = LocalizacaoFavoritoListAdapter(localizacaoFavoritoList, this)
                                         localizacao_recycler_view.adapter = adapter
                                     }
                                 }
                                 .addOnFailureListener { exception ->
-                                    Log.d("FirestoreData", "Error getting localizacao document: ", exception)
+                                    Toast.makeText(this@HomeActivity, "Erro a obter localização", Toast.LENGTH_LONG).show()
                                 }
                         }
                     }
                 }
                 .addOnFailureListener { exception ->
-                    Log.d("FirestoreData", "Error getting favoritos documents: ", exception)
+                    Toast.makeText(this@HomeActivity, "Erro ao obter os favoritos", Toast.LENGTH_LONG).show()
                 }
         }
     }
@@ -259,7 +253,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
                 .addOnFailureListener { exception ->
-                    Log.d("FirestoreData", "Error checking if localizacao is favorite: ", exception)
+                    Toast.makeText(this@HomeActivity, "Erro a verificar se localização está na listagem de favoritos", Toast.LENGTH_LONG).show()
                 }
         }
     }

@@ -39,34 +39,25 @@ class LocalizacaoFavoritoListAdapter(
                     val db = FirebaseFirestore.getInstance()
                     val currentUserUid = FirebaseAuth.getInstance().currentUser?.uid
 
-                    // Query the "favoritos" collection based on the conditions
                     val query = db.collection("favoritos")
                         .whereEqualTo("id_localizacao", localizacao.id)
                         .whereEqualTo("id_user", currentUserUid)
 
-                    // Delete the matching document from "favoritos" collection
                     query.get()
                         .addOnSuccessListener { snapshot ->
                             for (document in snapshot.documents) {
                                 document.reference.delete()
                                     .addOnSuccessListener {
-                                        // Handle successful deletion from favorites
-                                        // Update the UI accordingly
-                                        Toast.makeText(itemView.context, "Deleted from favorites", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(itemView.context, "Localização removida com sucesso dos favoritos", Toast.LENGTH_SHORT).show()
                                         homeActivity.getDataFavoritosUser()
                                     }
                                     .addOnFailureListener { e ->
-                                        // Handle failure to delete from favorites
-                                        // Update the UI accordingly
-                                        Toast.makeText(itemView.context, "Failed to delete from favorites: ${e.message}", Toast.LENGTH_SHORT).show()
-                                        Log.e(ContentValues.TAG, "Failed to delete from favorites", e)
+                                        Toast.makeText(itemView.context, "Falha na remoção da localização dos favoritos", Toast.LENGTH_SHORT).show()
                                     }
                             }
                         }
                         .addOnFailureListener { e ->
-                            // Handle failure to retrieve matching documents
-                            Toast.makeText(itemView.context, "Failed to retrieve favorites: ${e.message}", Toast.LENGTH_SHORT).show()
-                            Log.e(ContentValues.TAG, "Failed to retrieve favorites", e)
+                            Toast.makeText(itemView.context, "Falha ao receber a listagem dos favoritos", Toast.LENGTH_SHORT).show()
                         }
                 }
             }
@@ -122,9 +113,6 @@ class LocalizacaoFavoritoViewHolder(itemView: View) : RecyclerView.ViewHolder(it
                 "Cantina" -> {
                     val intent = Intent(itemView.context, InfoCantina::class.java)
                     itemView.context.startActivity(intent)
-                }
-                else -> {
-                    // Handle other cases if needed
                 }
             }
         }

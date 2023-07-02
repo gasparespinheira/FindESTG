@@ -27,9 +27,6 @@
             android:name=".Logout"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".Login"
             android:exported="false" />
         <activity
