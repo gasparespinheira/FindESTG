@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+    <group android:id="@+id/grp1">
+        <item
+            android:id="@+id/nav_home"
+            android:title="@string/nav_home"
+            android:icon="@drawable/baseline_home_24"/>
+
+        <item
+            android:id="@+id/nav_lista_favoritos"
+            android:title="@string/nav_lista_favoritos"
+            android:icon="@drawable/baseline_favorite_24"/>
+        <item
+            android:id="@+id/nav_idioma"
+            android:title="@string/nav_idioma"
+            android:icon="@drawable/baseline_language_24"/>
+    </group>
+    <group android:id="@+id/grp2">
+        <item
+            android:id="@+id/nav_logout"
+            android:title="@string/nav_logout"
+            android:icon="@drawable/baseline_logout_24"/>
+    </group>
+</menu>
