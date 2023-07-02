@@ -40,14 +40,6 @@
             android:visibility="gone">
 
             <ImageButton
-                android:id="@+id/add_favorite_button"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/button_add_favorite"
-                android:background="#0000FF" />
-
-            <ImageButton
                 android:id="@+id/delete_favorite_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -77,7 +69,3 @@
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
-
-
-
-

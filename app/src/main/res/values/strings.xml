@@ -3,4 +3,8 @@
     <string name="sala">Sala</string>
     <string name="auditorio">Auditório</string>
     <string name="servico">Serviço</string>
+    <string name="localizacoes_button">Localizações</string>
+    <string name="meus_favoritos_button">Meus Favoritos</string>
+    <string name="descricao_text_view">Descrição</string>
+    <string name="ver_mais_button">Ver +</string>
 </resources>
