@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:orientation="vertical"
-    android:background="@color/purple_200">
+    android:background="@color/yellow">
 
     <TextView
         android:id="@+id/nome_app"
@@ -18,13 +18,13 @@
         android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:id="@+id/nome_utilizador"
+        android:id="@+id/email_utilizador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:text="Nome Utilizador"
+        android:padding="10dp"
+        android:text="@string/email_utilizador"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:layout_below="@+id/nome_app"
         android:layout_centerHorizontal="true"/>
 </RelativeLayout>

@@ -1,17 +1,28 @@
 package ipvc.estg.findestg
 
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import androidx.appcompat.widget.Toolbar
 
 class HomeActivity : AppCompatActivity() {
 
@@ -26,7 +37,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_activity)
+        setContentView(R.layout.activity_home)
 
         localizacao_recycler_view = findViewById<RecyclerView>(R.id.localizacoes_recyclerview)
         localizacao_recycler_view.layoutManager = LinearLayoutManager(this)
@@ -39,6 +50,48 @@ class HomeActivity : AppCompatActivity() {
         Toast.makeText(this@HomeActivity, "Listagem localizações", Toast.LENGTH_LONG).show()
 
         user = FirebaseAuth.getInstance()
+
+        //inicio do menu
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        val navView: NavigationView = findViewById(R.id.nav_view)
+
+        if (user.currentUser != null) {
+            user.currentUser?.let {
+                val includedView = navView.getHeaderView(0)
+                val email_utilizador = includedView.findViewById<TextView>(R.id.email_utilizador)
+                email_utilizador.text = it.email
+            }
+        }
+
+        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
+        navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_home -> {
+                }
+                R.id.nav_logout -> {
+                    user.signOut()
+                    startActivity(
+                        Intent(
+                            this,
+                            Register::class.java
+                        )
+                    )
+                    finish()
+                }
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
+        }
+        //fim do menu
+
+        Log.d(TAG, "Activity created")
     }
 
     fun getLocalizacaoSalas(view: View?) {
