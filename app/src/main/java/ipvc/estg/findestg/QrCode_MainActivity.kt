@@ -10,20 +10,20 @@ import android.widget.Button
 import android.widget.TextView
 import android.content.Intent
 
-class MainActivity : AppCompatActivity() {
+class QrCode_MainActivity : AppCompatActivity() {
 
     private lateinit var scanBtn: Button
     private lateinit var textView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.qrcode_activity_main)
 
         scanBtn = findViewById(R.id.scanner)
         textView = findViewById(R.id.text)
 
         scanBtn.setOnClickListener(View.OnClickListener {
-            val intentIntegrator = IntentIntegrator(this@MainActivity)
+            val intentIntegrator = IntentIntegrator(this@QrCode_MainActivity)
             intentIntegrator.setPrompt("Scan a QR Code")
             intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
             intentIntegrator.setBarcodeImageEnabled(false)
