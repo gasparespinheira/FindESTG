@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/signin_screen"
+    android:background="@drawable/signin_screen2"
     tools:context=".Login">
 
 
@@ -27,7 +27,7 @@
         style="@style/LoginTextInputInnerFieldStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Type your Email"
+        android:hint="Escreva o seu Email"
         android:inputType="textEmailAddress" />
   </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,7 +51,7 @@
         style="@style/LoginTextInputInnerFieldStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Type Your Password"
+        android:hint="Escreva a sua Senha"
         android:inputType="textPassword" />
   </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,7 +61,7 @@
       android:layout_height="wrap_content"
       android:layout_marginHorizontal="16dp"
       android:background="@color/yellow"
-      android:text="Sign In"
+      android:text="Entrar"
       android:textColor="@color/black"
       android:textStyle="bold"
       app:layout_constraintBottom_toBottomOf="parent"
@@ -75,7 +75,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textColor="@color/black"
-      android:text="Not Registered Yet , Sign Up !"
+      android:text="Ainda não se registou? Clique aqui!"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.5"
