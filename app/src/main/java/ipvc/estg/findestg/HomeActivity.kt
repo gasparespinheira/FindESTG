@@ -5,10 +5,7 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -51,47 +48,7 @@ class HomeActivity : AppCompatActivity() {
 
         user = FirebaseAuth.getInstance()
 
-        //inicio do menu
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        val navView: NavigationView = findViewById(R.id.nav_view)
-
-        if (user.currentUser != null) {
-            user.currentUser?.let {
-                val includedView = navView.getHeaderView(0)
-                val email_utilizador = includedView.findViewById<TextView>(R.id.email_utilizador)
-                email_utilizador.text = it.email
-            }
-        }
-
-        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0)
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
-
-        navView.setNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.nav_home -> {
-                }
-                R.id.nav_logout -> {
-                    user.signOut()
-                    startActivity(
-                        Intent(
-                            this,
-                            Register::class.java
-                        )
-                    )
-                    finish()
-                }
-            }
-            drawerLayout.closeDrawer(GravityCompat.START)
-            true
-        }
-        //fim do menu
-
-        Log.d(TAG, "Activity created")
+        MenuHelper.setupMenu(this)
     }
 
     fun getLocalizacaoSalas(view: View?) {

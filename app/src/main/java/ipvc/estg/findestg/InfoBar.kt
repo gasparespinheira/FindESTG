@@ -19,6 +19,8 @@ class InfoBar : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_bar)
 
+        MenuHelper.setupMenu(this)
+
         textViewNome = findViewById(R.id.textViewNome)
         textViewHorario = findViewById(R.id.textViewHorario)
         textViewCadeiras = findViewById(R.id.textViewCadeiras)

@@ -15,6 +15,8 @@ class InfoAcademicos : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_academicos)
 
+        MenuHelper.setupMenu(this)
+
         textViewNome = findViewById(R.id.textViewNome)
         textViewHorario = findViewById(R.id.textViewHorario)
 

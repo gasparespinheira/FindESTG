@@ -1,87 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/linha1"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginTop="100dp">
+        tools:context=".HomeActivity"
+        android:orientation="vertical">
 
-        <Button
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/linha1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#FFC801"
-            android:onClick="getTodasLocalizacoes"
-            android:text="@string/localizacoes_button"
-            android:textColor="@color/black"
-            android:textSize="13sp"/>
+            android:padding="10dp"
+            android:layout_marginTop="70dp">
 
-        <Button
-            android:id="@+id/button_load_favoritos"
-            android:layout_width="0dp"
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#FFC801"
+                android:onClick="getTodasLocalizacoes"
+                android:text="@string/localizacoes_button"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+
+            <Button
+                android:id="@+id/button_load_favoritos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="#FFC801"
+                android:onClick="getTodasLocalizacoesFavoritos"
+                android:text="@string/meus_favoritos_button"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linha2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_weight="1"
-            android:backgroundTint="#FFC801"
-            android:onClick="getTodasLocalizacoesFavoritos"
-            android:text="@string/meus_favoritos_button"
-            android:textColor="@color/black"
-            android:textSize="13sp" />
-    </LinearLayout>
+            android:layout_below="@+id/linha1"
+            android:layout_marginBottom="20dp"
+            android:layout_margin="10dp">
+            <Button
+                android:id="@+id/button_getLocalizacaoSalas"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sala"
+                android:textSize="13sp"
+                android:onClick="getLocalizacaoSalas"/>
+            <Button
+                android:id="@+id/button_getLocalizacaoAuditorios"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:text="@string/auditorio"
+                android:textSize="13sp"
+                android:onClick="getLocalizacaoAuditorios"/>
 
-    <LinearLayout
-        android:id="@+id/linha2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linha1"
-        android:layout_marginBottom="20dp"
-        android:layout_margin="10dp">
-        <Button
-            android:id="@+id/button_getLocalizacaoSalas"
-            android:layout_width="0dp"
+            <Button
+                android:id="@+id/button_getLocalizacaoServicos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:text="@string/servico"
+                android:textSize="13sp"
+                android:onClick="getLocalizacaoServicos"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/localizacoes_recyclerview"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/sala"
-            android:textSize="13sp"
-            android:onClick="getLocalizacaoSalas"/>
-        <Button
-            android:id="@+id/button_getLocalizacaoAuditorios"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="5dp"
-            android:text="@string/auditorio"
-            android:textSize="13sp"
-            android:onClick="getLocalizacaoAuditorios"/>
+            android:layout_below="@+id/linha2"
+            android:layout_margin="10dp"/>
 
-        <Button
-            android:id="@+id/button_getLocalizacaoServicos"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="5dp"
-            android:text="@string/servico"
-            android:textSize="13sp"
-            android:onClick="getLocalizacaoServicos"/>
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/localizacoes_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linha2"
-        android:layout_margin="10dp"/>
+    </RelativeLayout>
 
     <include
-        layout="@layout/menu_activity"
+        layout="@layout/menu_topbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</RelativeLayout>
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/menu_header"
+        app:menu="@menu/nav_menu"/>
+</androidx.drawerlayout.widget.DrawerLayout>
+
