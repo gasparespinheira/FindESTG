@@ -7,6 +7,13 @@
     android:layout_margin="10dp"
     tools:context=".QrCode_MainActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Faça o scan do código QR para saber a sua localização atual:"
+        android:textSize="20dp"
+        />
+
     <Button
         android:id="@+id/scanner"
         android:layout_width="270dp"
@@ -15,9 +22,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="63dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="60dp"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/yellow"
         android:text="QR SCANNER"/>
 
     <TextView
@@ -26,7 +33,7 @@
         android:layout_height="312dp"
         android:layout_below="@+id/scanner"
         android:layout_centerInParent="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="50dp"
         android:textSize="30dp" />
 
     <Button
@@ -37,6 +44,7 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
         android:text="Desejo navegar com a Bússola"
+        android:backgroundTint="@color/yellow"
         android:onClick="navegar_bussola"/>
 
 
