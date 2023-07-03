@@ -10,7 +10,7 @@ class InfoCantina : AppCompatActivity() {
     private lateinit var textViewNome: TextView
     private lateinit var textViewHorario: TextView
     private lateinit var textViewCadeiras: TextView
-    private lateinit var textViewPratos: TextView
+    private lateinit var textViewPrato: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,7 @@ class InfoCantina : AppCompatActivity() {
         textViewNome = findViewById(R.id.textViewNome)
         textViewHorario = findViewById(R.id.textViewHorario)
         textViewCadeiras = findViewById(R.id.textViewCadeiras)
-        textViewPratos = findViewById(R.id.textViewComida)
+        textViewPrato = findViewById(R.id.textViewPrato)
 
         val backButton: Button = findViewById(R.id.backButton)
         backButton.setOnClickListener {
@@ -35,19 +35,20 @@ class InfoCantina : AppCompatActivity() {
             val baseDados = openOrCreateDatabase("DB_CANTINA", MODE_PRIVATE, null)
 
             //criar uma tabela
-            baseDados.execSQL("CREATE TABLE IF NOT EXISTS cantina(nome VARCHAR(255), horario VARCHAR(255), cadeiras VARCHAR(255), pratos VARCHAR(255))")
+            baseDados.execSQL("CREATE TABLE IF NOT EXISTS cantina(nome VARCHAR(255), horario VARCHAR(255), cadeiras VARCHAR(255), prato VARCHAR(255))")
 
             //Inserir dados numa tabela
-            baseDados.execSQL("INSERT INTO cantina(nome, horario, cadeiras, comida) VALUES ('Cantina', '12:00 - 14:30', '300', 'Prato do Dia, Sugestão do Dia, Grill')")
+            baseDados.execSQL("INSERT INTO cantina(nome, horario, cadeiras, prato) VALUES ('Cantina', '12:00 - 14:30', '300', 'Prato do Dia, Sugestão do Dia, Grill')")
 
-            val consulta = "SELECT nome,horario,cadeiras,prato FROM cantina"
-            val cursor = baseDados.rawQuery(consulta,null)
+            val consulta = "SELECT nome, horario, cadeiras, prato FROM cantina"
+            val cursor = baseDados.rawQuery(consulta, null)
 
             //Recuperar os indices da tabela
             val indiceNome = cursor.getColumnIndex("nome")
             val indiceHorario = cursor.getColumnIndex("horario")
             val indiceCadeiras = cursor.getColumnIndex("cadeiras")
             val indicePrato = cursor.getColumnIndex("prato")
+
 
             if (cursor.moveToFirst()) {
                 val nome = cursor.getString(indiceNome)
@@ -60,7 +61,7 @@ class InfoCantina : AppCompatActivity() {
                 textViewNome.text = "$nome"
                 textViewHorario.text = "Horário de funcionamento: $horario"
                 textViewCadeiras.text = "Número de cadeiras: $cadeiras"
-                textViewPratos.text = "Pratos disponíveis: $prato"
+                textViewPrato.text = "Pratos disponíveis: $prato"
             }
 
             cursor.close()

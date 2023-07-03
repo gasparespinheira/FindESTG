@@ -7,11 +7,15 @@
     android:layout_margin="10dp"
     tools:context=".QrCode_MainActivity">
 
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="Faça o scan do código QR para saber a sua localização atual:"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_margin="20dp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/yellow"/>
 
     <Button
         android:id="@+id/scanner"
@@ -23,6 +27,7 @@
         android:layout_marginStart="63dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="60dp"
+        android:textColor="@color/black"
         android:backgroundTint="@color/yellow"
         android:text="QR SCANNER"/>
 
@@ -32,37 +37,47 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/scanner"
         android:gravity="center"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/yellow"/>
 
-    <LinearLayout
-        android:id="@+id/linha1"
+
+    <Button
+        android:id="@+id/button_load_favoritos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="5dp"
-        android:paddingEnd="10dp"
-        android:paddingStart="10dp"
-        android:layout_margin="20dp"
-        android:layout_below="@id/text">
+        android:layout_marginStart="5dp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/yellow"
+        android:textSize="13sp"
+        android:layout_below="@+id/button_cancel"
+        android:text="Deseja navegar com a bussola?"
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/yellow"
-            android:textColor="@color/black"
-            android:text="@string/desejo_navegar_com_o_mapa"
-            android:textSize="13sp"/>
+        android:onClick="navegar_bussola"
+        android:layout_marginTop="20dp"/>
 
-        <Button
-            android:id="@+id/button_load_favoritos"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            android:text="@string/desejo_navegar_com_a_bussola"
-            android:backgroundTint="@color/yellow"
-            android:onClick="navegar_bussola"/>
-    </LinearLayout>
+    <Button
+        android:id="@+id/button_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Confirmar"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/yellow"
+        android:onClick="confirmarLocalizacao" />
+
+    <Button
+        android:id="@+id/button_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_confirm"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Cancelar"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/yellow"
+        android:onClick="cancelarLocalizacao" />
+
 </RelativeLayout>
