@@ -119,22 +119,29 @@ class LocalizacaoFavoritoViewHolder(itemView: View) : RecyclerView.ViewHolder(it
         }
 
         _mapButton.setOnClickListener {
-            val descricao = localizacao.descricao
+            val descricao_localizacao = localizacao.descricao
 
-            when (descricao) {
+            // Show Toast
+            Toast.makeText(itemView.context, "Descricao: $descricao_localizacao", Toast.LENGTH_SHORT).show()
+
+            when (descricao_localizacao) {
                 "Serviços Académicos" -> {
                     val intent = Intent(itemView.context, InfoAcademicos::class.java)
+                    intent.putExtra("descricao_localizacao", descricao_localizacao)
                     itemView.context.startActivity(intent)
                 }
                 "Bar" -> {
                     val intent = Intent(itemView.context, InfoBar::class.java)
+                    intent.putExtra("descricao_localizacao", descricao_localizacao)
                     itemView.context.startActivity(intent)
                 }
                 "Cantina" -> {
                     val intent = Intent(itemView.context, InfoCantina::class.java)
+                    intent.putExtra("descricao_localizacao", descricao_localizacao)
                     itemView.context.startActivity(intent)
                 }
             }
+            //val descricao_localizacao = intent.getIntExtra("descricao_localizacao", -1)
         }
     }
 }
