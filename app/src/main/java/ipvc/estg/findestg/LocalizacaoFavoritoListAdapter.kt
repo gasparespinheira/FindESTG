@@ -2,6 +2,8 @@ package ipvc.estg.findestg
 
 import android.content.ContentValues
 import android.content.Intent
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -121,27 +123,32 @@ class LocalizacaoFavoritoViewHolder(itemView: View) : RecyclerView.ViewHolder(it
         _mapButton.setOnClickListener {
             val descricao_localizacao = localizacao.descricao
 
+            // Salvar descricao_localizacao no SharedPreferences
+            val sharedPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(itemView.context)
+            val editor: SharedPreferences.Editor = sharedPreferences.edit()
+            editor.putString("descricao_localizacao", descricao_localizacao)
+            editor.apply()
+
             // Show Toast
             Toast.makeText(itemView.context, "Descricao: $descricao_localizacao", Toast.LENGTH_SHORT).show()
 
             when (descricao_localizacao) {
                 "Serviços Académicos" -> {
-                    val intent = Intent(itemView.context, InfoAcademicos::class.java)
+                    val intent = Intent(itemView.context, QrCode_MainActivity::class.java)
                     intent.putExtra("descricao_localizacao", descricao_localizacao)
                     itemView.context.startActivity(intent)
                 }
                 "Bar" -> {
-                    val intent = Intent(itemView.context, InfoBar::class.java)
+                    val intent = Intent(itemView.context,  QrCode_MainActivity::class.java)
                     intent.putExtra("descricao_localizacao", descricao_localizacao)
                     itemView.context.startActivity(intent)
                 }
                 "Cantina" -> {
-                    val intent = Intent(itemView.context, InfoCantina::class.java)
+                    val intent = Intent(itemView.context, QrCode_MainActivity::class.java)
                     intent.putExtra("descricao_localizacao", descricao_localizacao)
                     itemView.context.startActivity(intent)
                 }
             }
-            //val descricao_localizacao = intent.getIntExtra("descricao_localizacao", -1)
         }
     }
 }
