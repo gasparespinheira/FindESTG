@@ -44,7 +44,7 @@ class HomeActivity : AppCompatActivity() {
 
         getDataLocalizacoes()
 
-        Toast.makeText(this@HomeActivity, "Listagem localizações", Toast.LENGTH_LONG).show()
+        Toast.makeText(this@HomeActivity, "Listagem localizações", Toast.LENGTH_SHORT).show()
 
         user = FirebaseAuth.getInstance()
 
@@ -55,17 +55,16 @@ class HomeActivity : AppCompatActivity() {
 
         if (localizacaoFavoritoList.isNotEmpty()) {
             localizacaoFavoritoList.clear()
-
             valor_botao_lista_favoritos = 1
             getDataFavoritosUser()
-            Toast.makeText(this@HomeActivity, "Listagem localizações favoritas filtrada pelo tipo sala", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@HomeActivity, "Listagem localizações favoritas filtrada pelo tipo sala", Toast.LENGTH_SHORT).show()
         }
 
         if (localizacaoList.isNotEmpty()) {
             localizacaoList.clear()
             valor_botao_lista_localizacoes = 1
             getDataLocalizacoes()
-            Toast.makeText(this@HomeActivity, "Listagem localizações filtrada pelo tipo sala", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@HomeActivity, "Listagem localizações filtrada pelo tipo sala", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -73,17 +72,16 @@ class HomeActivity : AppCompatActivity() {
 
         if (localizacaoFavoritoList.isNotEmpty()) {
             localizacaoFavoritoList.clear()
-
             valor_botao_lista_favoritos = 2
             getDataFavoritosUser()
-            Toast.makeText(this@HomeActivity, "Listagem localizações favoritas filtrada pelo tipo auditório", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@HomeActivity, "Listagem localizações favoritas filtrada pelo tipo auditório", Toast.LENGTH_SHORT).show()
         }
 
         if (localizacaoList.isNotEmpty()) {
             localizacaoList.clear()
             valor_botao_lista_localizacoes = 2
             getDataLocalizacoes()
-            Toast.makeText(this@HomeActivity, "Listagem localizações filtrada pelo tipo auditório", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@HomeActivity, "Listagem localizações filtrada pelo tipo auditório", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -93,14 +91,14 @@ class HomeActivity : AppCompatActivity() {
             localizacaoFavoritoList.clear()
             valor_botao_lista_favoritos = 3
             getDataFavoritosUser()
-            Toast.makeText(this@HomeActivity, "Listagem localizações favoritas filtrada pelo tipo serviço", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@HomeActivity, "Listagem localizações favoritas filtrada pelo tipo serviço", Toast.LENGTH_SHORT).show()
         }
 
         if (localizacaoList.isNotEmpty()){
             localizacaoList.clear()
             valor_botao_lista_localizacoes = 3
             getDataLocalizacoes()
-            Toast.makeText(this@HomeActivity, "Listagem localizações filtrada pelo tipo serviço", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@HomeActivity, "Listagem localizações filtrada pelo tipo serviço", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -109,7 +107,7 @@ class HomeActivity : AppCompatActivity() {
         localizacaoList.clear()
         valor_botao_lista_localizacoes = null
         getDataLocalizacoes()
-        Toast.makeText(this@HomeActivity, "Listagem localizações", Toast.LENGTH_LONG).show()
+        Toast.makeText(this@HomeActivity, "Listagem localizações", Toast.LENGTH_SHORT).show()
     }
 
     fun getTodasLocalizacoesFavoritos(view: View) {
@@ -170,7 +168,7 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener {
-                Toast.makeText(this@HomeActivity, "Falha na listagem das localizações", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@HomeActivity, "Falha na listagem das localizações", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -236,13 +234,13 @@ class HomeActivity : AppCompatActivity() {
                                     }
                                 }
                                 .addOnFailureListener { exception ->
-                                    Toast.makeText(this@HomeActivity, "Erro a obter localização", Toast.LENGTH_LONG).show()
+                                    Toast.makeText(this@HomeActivity, "Erro a obter localização", Toast.LENGTH_SHORT).show()
                                 }
                         }
                     }
                 }
                 .addOnFailureListener { exception ->
-                    Toast.makeText(this@HomeActivity, "Erro ao obter os favoritos", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@HomeActivity, "Erro ao obter os favoritos", Toast.LENGTH_SHORT).show()
                 }
         }
     }
@@ -263,7 +261,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
                 .addOnFailureListener { exception ->
-                    Toast.makeText(this@HomeActivity, "Erro a verificar se localização está na listagem de favoritos", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@HomeActivity, "Erro a verificar se localização está na listagem de favoritos", Toast.LENGTH_SHORT).show()
                 }
         }
     }

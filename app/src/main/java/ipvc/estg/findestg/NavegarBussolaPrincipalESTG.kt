@@ -26,36 +26,35 @@ class NavegarBussolaPrincipalESTG : AppCompatActivity() {
     private lateinit var powerManager: PowerManager
     private lateinit var wakeLock: PowerManager.WakeLock
 
-
-
-
     private var ultimoGrau = 0f
     private var vlrsBussola = FloatArray(3)
     private var vlrsGravidade = FloatArray(3)
     private var angulosDeOrientacao = FloatArray(3)
     private var matrixDeRotacao = FloatArray(9)
 
-
     private lateinit var button_cantina: Button
     private lateinit var button_bar: Button
     private lateinit var button_academicos: Button
     private lateinit var button_todos: Button
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navegar_bussola_estg)
 
+        MenuHelper.setupMenu(this)
+
+        val backButton: Button = findViewById(R.id.backButton)
+        backButton.setOnClickListener {
+            finish() // Encerrar a atividade atual e voltar para a tela anterior
+        }
+
         var imageView: ImageView = findViewById(R.id.imageView)
 
         // -- CANTINA --
-
         button_cantina = findViewById(R.id.button_cantina)
         button_cantina.setOnClickListener {
             imageView.setImageResource(R.drawable.bussola_cantina_principal)
         }
-
 
         // -- BAR
         button_bar = findViewById(R.id.button_bar)
@@ -63,25 +62,17 @@ class NavegarBussolaPrincipalESTG : AppCompatActivity() {
             imageView.setImageResource(R.drawable.bussola_bar_principal)
         }
 
-
         // -- ACADEMICOS
-
         button_academicos = findViewById(R.id.button_sa)
         button_academicos.setOnClickListener {
             imageView.setImageResource(R.drawable.bussola_academicos_principal)
         }
 
-
         // -- TODOS
-
         button_todos = findViewById(R.id.button_all)
         button_todos.setOnClickListener {
             imageView.setImageResource(R.drawable.bussola_todos_principal)
         }
-
-
-
-
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         Proximidade = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)
@@ -152,7 +143,6 @@ class NavegarBussolaPrincipalESTG : AppCompatActivity() {
                 ultimoGrau = -grauAtual
 
             }
-
 
             override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
 

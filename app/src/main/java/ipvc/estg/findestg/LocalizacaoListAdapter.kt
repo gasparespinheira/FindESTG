@@ -156,9 +156,6 @@ class LocalizacaoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
             editor.putString("descricao_localizacao", descricao_localizacao)
             editor.apply()
 
-            // Show Toast
-            Toast.makeText(itemView.context, "Descricao: $descricao_localizacao", Toast.LENGTH_SHORT).show()
-
             when (descricao_localizacao) {
                 "Serviços Académicos" -> {
                     val intent = Intent(itemView.context, QrCode_MainActivity::class.java)

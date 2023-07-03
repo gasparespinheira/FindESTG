@@ -10,7 +10,6 @@ import ipvc.estg.findestg.databinding.ActivityLoginBinding
 
 class Login : AppCompatActivity() {
 
-
     private lateinit var binding: ActivityLoginBinding
     private lateinit var firebaseAuth: FirebaseAuth
 
@@ -42,7 +41,7 @@ class Login : AppCompatActivity() {
                     }
                 }
             } else {
-                Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Campos vazios não são permitidos!", Toast.LENGTH_SHORT).show()
 
             }
         }
