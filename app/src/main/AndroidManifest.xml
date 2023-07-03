@@ -4,6 +4,8 @@
     package="ipvc.estg.findestg">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
 
     <application
         android:allowBackup="true"
@@ -26,11 +28,24 @@
         <activity
             android:name=".Logout"
             android:exported="false" />
+
         <activity
             android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NavegarBussolaLateralESTG"
+            android:exported="false" />
+        <activity
+            android:name=".NavegarBussolaTraseiraESTG"
+            android:exported="false" />
+        <activity
+            android:name=".NavegarBussolaPrincipalESTG"
+            android:exported="false" />
+        <activity
+            android:name=".QrCode_MainActivity"
             android:exported="false" />
         <activity
             android:name=".Register"
