@@ -9,6 +9,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.content.Intent
+import android.content.SharedPreferences
+import android.preference.PreferenceManager
+import android.widget.Toast
 
 class QrCode_MainActivity : AppCompatActivity() {
 
@@ -37,7 +40,8 @@ class QrCode_MainActivity : AppCompatActivity() {
         if (intentResult != null) {
             val contents: String? = intentResult.contents
             if (contents != null) {
-                textView.setText(intentResult.contents)
+                textView.text = intentResult.contents
+                Toast.makeText(this@QrCode_MainActivity, "QR Code: $contents", Toast.LENGTH_SHORT).show()
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
@@ -51,5 +55,27 @@ class QrCode_MainActivity : AppCompatActivity() {
         startActivity(intent)
 
     }
+
+    fun confirmarLocalizacao(view: View) {
+        // Obtenha a localização atual da textView
+        val localizacao = textView.text.toString()
+
+        // Salve a localização no SharedPreferences
+        val sharedPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.putString("localizacao", localizacao)
+        editor.apply()
+
+        // Navegue para a próxima atividade (MapaActivity)
+        val intent = Intent(this, MapaActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun cancelarLocalizacao(view: View) {
+        // Reinicie a atividade atual (QrCode_MainActivity) para ler um novo QRCode
+        val intent = intent
+        startActivity(intent)
+    }
+
 
 }
