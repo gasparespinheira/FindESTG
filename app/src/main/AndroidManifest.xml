@@ -44,7 +44,8 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".QrCode_MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".HomeActivity"
             android:exported="false"
