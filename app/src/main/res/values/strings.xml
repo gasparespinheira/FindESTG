@@ -14,5 +14,12 @@
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
     <string name="email_utilizador">Email Utilizador</string>
-    <string name="desejo_navegar_com_a_bussola">Navegar com a Bússola</string>
+    <string name="desejo_navegar_com_a_bussola">Deseja navegar com a bussola?</string>
+    <string name="cancelar_button">Tentar outra vez</string>
+    <string name="confirmar_button">Confirmar Localização</string>
+    <string name="qr_scanner_button">QR SCANNER</string>
+    <string name="text_qr_code_o_que_fazer">Faça o scan do código QR para saber a sua localização atual:</string>
+    <string name="voltar_button">Voltar</string>
+    <string name="filtrar_por_text">Filtrar por</string>
+    <string name="escolha_o_que_quer_text">Esclha o que quer ver</string>
 </resources>

@@ -17,10 +17,18 @@ class QrCode_MainActivity : AppCompatActivity() {
 
     private lateinit var scanBtn: Button
     private lateinit var textView: TextView
+    private var qrCodeContents: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.qrcode_activity_main)
+
+        MenuHelper.setupMenu(this)
+
+        val backButton: Button = findViewById(R.id.backButton)
+        backButton.setOnClickListener {
+            finish() // Encerrar a atividade atual e voltar para a tela anterior
+        }
 
         scanBtn = findViewById(R.id.scanner)
         textView = findViewById(R.id.text)
@@ -31,29 +39,57 @@ class QrCode_MainActivity : AppCompatActivity() {
             intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
             intentIntegrator.setBarcodeImageEnabled(false)
             intentIntegrator.initiateScan()
-
         })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
         val intentResult: IntentResult? = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (intentResult != null) {
-            val contents: String? = intentResult.contents
-            if (contents != null) {
-                textView.text = intentResult.contents
-                Toast.makeText(this@QrCode_MainActivity, "QR Code: $contents", Toast.LENGTH_SHORT).show()
+            qrCodeContents = intentResult.contents
+            if (qrCodeContents != null) {
+                textView.setText(qrCodeContents)
+
+                setButtonVisibility()
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
+    }
 
+    fun setButtonVisibility() {
+        val button_confirm: Button = findViewById(R.id.button_confirm)
+        val button_cancel: Button = findViewById(R.id.button_cancel)
+        val button_navegar_com_bussola: Button = findViewById(R.id.button_navegar_com_bussola)
+
+        if (qrCodeContents != null) {
+            button_confirm.visibility = View.VISIBLE
+            button_cancel.visibility = View.VISIBLE
+            button_navegar_com_bussola.visibility = View.VISIBLE
+        } else {
+            button_confirm.visibility = View.GONE
+            button_cancel.visibility = View.GONE
+            button_navegar_com_bussola.visibility = View.GONE
+        }
     }
 
     fun navegar_bussola(view: View) {
 
-        val intent = Intent(this, NavegarBussolaLateralESTG::class.java)
-        startActivity(intent)
+        Toast.makeText(this, "Ponto de Partida: $qrCodeContents", Toast.LENGTH_SHORT).show()
 
+        when (qrCodeContents) {
+            "Entrada Lateral ESTG" -> {
+                val intent = Intent(this, NavegarBussolaLateralESTG::class.java)
+                startActivity(intent)
+            }
+            "Entrada Principal da ESTG" -> {
+                val intent = Intent(this, NavegarBussolaLateralESTG::class.java)
+                startActivity(intent)
+            }
+            "Entrada traseira ESTG" -> {
+                val intent = Intent(this, NavegarBussolaLateralESTG::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     fun confirmarLocalizacao(view: View) {
@@ -76,6 +112,4 @@ class QrCode_MainActivity : AppCompatActivity() {
         val intent = intent
         startActivity(intent)
     }
-
-
 }

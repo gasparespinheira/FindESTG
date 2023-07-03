@@ -28,7 +28,7 @@
             android:paddingBottom="5dp"
             android:paddingEnd="10dp"
             android:paddingStart="10dp"
-            android:text="Esclha o que quer ver"/>
+            android:text="@string/escolha_o_que_quer_text"/>
 
         <LinearLayout
             android:id="@+id/linha1"
@@ -66,14 +66,15 @@
             android:id="@+id/textlinha2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:text="Filtrar por"
-            android:paddingBottom="5dp"
-            android:paddingEnd="10dp"
+            android:layout_below="@id/linha1"
+            android:layout_centerInParent="true"
             android:paddingStart="10dp"
-            android:layout_below="@id/linha1"/>
+            android:paddingEnd="10dp"
+            android:paddingBottom="5dp"
+            android:text="@string/filtrar_por_text"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/linha2"

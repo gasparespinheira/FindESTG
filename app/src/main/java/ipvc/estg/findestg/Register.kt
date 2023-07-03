@@ -26,7 +26,6 @@ class Register : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         user = FirebaseAuth.getInstance()
 
         if (user.currentUser != null) {
@@ -52,10 +51,10 @@ class Register : AppCompatActivity() {
                         }
                     }
                 } else {
-                    Toast.makeText(this, "Password is not matching", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Passwords não coincidem!", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Campos vazios não são permitidos!", Toast.LENGTH_SHORT).show()
 
             }
         }
