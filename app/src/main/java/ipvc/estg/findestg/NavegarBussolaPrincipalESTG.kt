@@ -49,7 +49,7 @@ class NavegarBussolaPrincipalESTG : AppCompatActivity() {
 
         var imageView: ImageView = findViewById(R.id.imageView)
 
-        // -- CANTINA
+        // -- CANTINA --
 
         button_cantina = findViewById(R.id.button_cantina)
         button_cantina.setOnClickListener {
