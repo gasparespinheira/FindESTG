@@ -81,6 +81,7 @@ class LocalizacaoFavoritoViewHolder(itemView: View) : RecyclerView.ViewHolder(it
     val _descricao: TextView = itemView.findViewById(R.id.descricao_item)
     val _linhaOcultaLayout: LinearLayout = itemView.findViewById(R.id.linha_oculta)
     val _verMaisButton: Button = itemView.findViewById(R.id.ver_mais_button)
+    val _mapButton: ImageButton = itemView.findViewById(R.id.map_button)
     val _deleteFavoriteButton: ImageButton = itemView.findViewById(R.id.delete_favorite_button)
 
     fun bind(localizacao: Localizacao, isItemSelected: Boolean) {
@@ -99,6 +100,25 @@ class LocalizacaoFavoritoViewHolder(itemView: View) : RecyclerView.ViewHolder(it
         }
 
         _verMaisButton.setOnClickListener {
+            val descricao = localizacao.descricao
+
+            when (descricao) {
+                "Serviços Académicos" -> {
+                    val intent = Intent(itemView.context, InfoAcademicos::class.java)
+                    itemView.context.startActivity(intent)
+                }
+                "Bar" -> {
+                    val intent = Intent(itemView.context, InfoBar::class.java)
+                    itemView.context.startActivity(intent)
+                }
+                "Cantina" -> {
+                    val intent = Intent(itemView.context, InfoCantina::class.java)
+                    itemView.context.startActivity(intent)
+                }
+            }
+        }
+
+        _mapButton.setOnClickListener {
             val descricao = localizacao.descricao
 
             when (descricao) {

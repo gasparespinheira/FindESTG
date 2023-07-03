@@ -105,6 +105,7 @@ class LocalizacaoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     val _descricao: TextView = itemView.findViewById(R.id.descricao_item)
     val _linhaOcultaLayout: LinearLayout = itemView.findViewById(R.id.linha_oculta)
     val _verMaisButton: Button = itemView.findViewById(R.id.ver_mais_button)
+    val _mapButton: ImageButton = itemView.findViewById(R.id.map_button)
     val _addFavoriteButton: ImageButton = itemView.findViewById(R.id.add_favorite_button)
     val _deleteFavoriteButton: ImageButton = itemView.findViewById(R.id.delete_favorite_button)
 
@@ -142,6 +143,33 @@ class LocalizacaoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
                     itemView.context.startActivity(intent)
                 }
             }
+        }
+
+        _mapButton.setOnClickListener {
+            val localizacaoId = localizacao.id
+            val descricao = localizacao.descricao
+
+            // Show Toast
+            Toast.makeText(itemView.context, "Localizacao ID: $localizacaoId", Toast.LENGTH_SHORT).show()
+
+            when (descricao) {
+                "Serviços Académicos" -> {
+                    val intent = Intent(itemView.context, InfoAcademicos::class.java)
+                    intent.putExtra("localizacaoId", localizacaoId)
+                    itemView.context.startActivity(intent)
+                }
+                "Bar" -> {
+                    val intent = Intent(itemView.context, InfoBar::class.java)
+                    intent.putExtra("localizacaoId", localizacaoId)
+                    itemView.context.startActivity(intent)
+                }
+                "Cantina" -> {
+                    val intent = Intent(itemView.context, InfoCantina::class.java)
+                    intent.putExtra("localizacaoId", localizacaoId)
+                    itemView.context.startActivity(intent)
+                }
+            }
+            //val localizacaoId = intent.getIntExtra("localizacaoId", -1)
         }
     }
 }

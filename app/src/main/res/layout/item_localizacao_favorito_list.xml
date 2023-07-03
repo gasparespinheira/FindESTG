@@ -48,6 +48,7 @@
                 android:background="#0000FF" />
 
             <ImageButton
+                android:id="@+id/map_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
