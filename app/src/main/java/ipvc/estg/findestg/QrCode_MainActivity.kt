@@ -9,11 +9,13 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.content.Intent
+import android.widget.Toast
 
 class QrCode_MainActivity : AppCompatActivity() {
 
     private lateinit var scanBtn: Button
     private lateinit var textView: TextView
+    private var qrCodeContents: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,21 +37,32 @@ class QrCode_MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
         val intentResult: IntentResult? = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (intentResult != null) {
-            val contents: String? = intentResult.contents
-            if (contents != null) {
-                textView.setText(intentResult.contents)
+            qrCodeContents = intentResult.contents
+            if (qrCodeContents != null) {
+                textView.setText(qrCodeContents)
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
-
     }
 
     fun navegar_bussola(view: View) {
 
-        val intent = Intent(this, NavegarBussolaLateralESTG::class.java)
-        startActivity(intent)
+        Toast.makeText(this, "Ponto de Partida: $qrCodeContents", Toast.LENGTH_SHORT).show()
 
+        when (qrCodeContents) {
+            "Entrada Lateral ESTG" -> {
+                val intent = Intent(this, NavegarBussolaLateralESTG::class.java)
+                startActivity(intent)
+            }
+            "Entrada Principal da ESTG" -> {
+                val intent = Intent(this, NavegarBussolaLateralESTG::class.java)
+                startActivity(intent)
+            }
+            "Entrada traseira ESTG" -> {
+                val intent = Intent(this, NavegarBussolaLateralESTG::class.java)
+                startActivity(intent)
+            }
+        }
     }
-
 }

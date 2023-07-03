@@ -26,22 +26,16 @@ class NavegarBussolaPrincipalESTG : AppCompatActivity() {
     private lateinit var powerManager: PowerManager
     private lateinit var wakeLock: PowerManager.WakeLock
 
-
-
-
     private var ultimoGrau = 0f
     private var vlrsBussola = FloatArray(3)
     private var vlrsGravidade = FloatArray(3)
     private var angulosDeOrientacao = FloatArray(3)
     private var matrixDeRotacao = FloatArray(9)
 
-
     private lateinit var button_cantina: Button
     private lateinit var button_bar: Button
     private lateinit var button_academicos: Button
     private lateinit var button_todos: Button
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,10 +72,6 @@ class NavegarBussolaPrincipalESTG : AppCompatActivity() {
         button_todos.setOnClickListener {
             imageView.setImageResource(R.drawable.bussola_todos_principal)
         }
-
-
-
-
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         Proximidade = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)

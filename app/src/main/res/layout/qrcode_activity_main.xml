@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="Faça o scan do código QR para saber a sua localização atual:"
-        android:textSize="20dp"
-        />
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/scanner"
@@ -30,23 +29,40 @@
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="312dp"
-        android:layout_below="@+id/scanner"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="50dp"
-        android:textSize="30dp" />
-
-    <Button
-        android:id="@+id/button_bussola"
-        android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="20dp"
-        android:text="Desejo navegar com a Bússola"
-        android:backgroundTint="@color/yellow"
-        android:onClick="navegar_bussola"/>
+        android:layout_below="@+id/scanner"
+        android:gravity="center"
+        android:textSize="20dp"/>
 
+    <LinearLayout
+        android:id="@+id/linha1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:layout_margin="20dp"
+        android:layout_below="@id/text">
 
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/yellow"
+            android:textColor="@color/black"
+            android:text="@string/desejo_navegar_com_o_mapa"
+            android:textSize="13sp"/>
 
+        <Button
+            android:id="@+id/button_load_favoritos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:text="@string/desejo_navegar_com_a_bussola"
+            android:backgroundTint="@color/yellow"
+            android:onClick="navegar_bussola"/>
+    </LinearLayout>
 </RelativeLayout>
