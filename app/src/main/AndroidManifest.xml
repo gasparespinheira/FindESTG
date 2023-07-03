@@ -26,16 +26,6 @@
             android:name=".InfoAcademicos"
             android:exported="false" />
         <activity
-            android:name=".Logout"
-            android:exported="false" />
-
-        <activity
-            android:name=".Login"
-            android:exported="false" />
-        <activity
-            android:name=".HomeActivity"
-            android:exported="false" />
-        <activity
             android:name=".NavegarBussolaLateralESTG"
             android:exported="false" />
         <activity
@@ -46,6 +36,15 @@
             android:exported="false" />
         <activity
             android:name=".QrCode_MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Logout"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".Register"
